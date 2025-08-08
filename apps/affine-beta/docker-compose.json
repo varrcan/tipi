@@ -6,7 +6,7 @@
       "name": "affine",
       "internalPort": 3010,
       "isMain": true,
-      "command": ["sh", "-c", "find . -name '*.js' -type f -not -path '*/node_modules/*' -exec sed -i 's/claude-sonnet-4@20250514/gpt-4o/g' {} \\; && node ./scripts/self-host-predeploy && node ./dist/main.js"],
+      "command": ["sh", "-c", "find . -name '*.js' -type f -not -path '*/node_modules/*' -exec sed -i 's/claude-sonnet-4@20250514/gpt-4o/g' {} \\; && find . -name '*.js' -type f -not -path '*/node_modules/*' -exec sed -i 's/gemini-embedding-001/text-embedding-3-small/g' {} \\; && node ./scripts/self-host-predeploy && node ./dist/main.js"],
       "volumes": [
         {
           "hostPath": "${APP_DATA_DIR}/data/config",
