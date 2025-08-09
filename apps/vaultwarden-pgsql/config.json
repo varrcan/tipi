@@ -58,17 +58,17 @@
             "default": false
         },
         {
-            "type": "text",
-            "label": "Invitations Org Name",
-            "required": false,
-            "env_variable": "VAULTWARDEN_INVITATIONS_ORG_NAME"
-        },
-        {
             "type": "boolean",
             "label": "Emergency Access Allowed",
             "required": false,
             "env_variable": "VAULTWARDEN_EMERGENCY_ACCESS_ALLOWED",
             "default": true
+        },
+        {
+            "type": "text",
+            "label": "Invitations Org Name",
+            "required": false,
+            "env_variable": "VAULTWARDEN_INVITATIONS_ORG_NAME"
         },
         {
             "env_variable": "VAULTWARDEN_POSTGRES_DB",
