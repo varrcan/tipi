@@ -6,7 +6,7 @@
     "dynamic_config": true,
     "port": 8107,
     "id": "vaultwarden-pgsql",
-    "tipi_version": 1,
+    "tipi_version": 2,
     "version": "1.34.3",
     "categories": [
         "utilities"
@@ -64,7 +64,7 @@
             "env_variable": "VAULTWARDEN_INVITATIONS_ORG_NAME"
         },
         {
-            "type": "text",
+            "type": "boolean",
             "label": "Emergency Access Allowed",
             "required": false,
             "env_variable": "VAULTWARDEN_EMERGENCY_ACCESS_ALLOWED",
