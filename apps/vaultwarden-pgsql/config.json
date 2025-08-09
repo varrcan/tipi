@@ -1,0 +1,144 @@
+{
+    "$schema": "../app-info-schema.json",
+    "name": "Vaultwarden PGSQL",
+    "available": true,
+    "exposable": true,
+    "dynamic_config": true,
+    "port": 8107,
+    "id": "vaultwarden-pgsql",
+    "tipi_version": 1,
+    "version": "1.34.3",
+    "categories": [
+        "utilities"
+    ],
+    "description": "Alternative implementation of the Bitwarden server API written in Rust and compatible with upstream Bitwarden clients, perfect for self-hosted deployment where running the official resource-heavy service might not be ideal.",
+    "short_desc": "All your passwords in your control!",
+    "author": "Daniel García",
+    "source": "https://github.com/dani-garcia/vaultwarden",
+    "form_fields": [
+        {
+            "type": "password",
+            "label": "Admin Panel Password",
+            "max": 128,
+            "required": false,
+            "env_variable": "VAULTWARDEN_ADMIN_PASSWORD"
+        },
+        {
+            "type": "text",
+            "label": "Domain",
+            "required": false,
+            "env_variable": "VAULTWARDEN_DOMAIN"
+        },
+        {
+            "type": "boolean",
+            "label": "Send Allowed",
+            "required": false,
+            "env_variable": "VAULTWARDEN_SEND_ALLOWED",
+            "default": true
+        },
+        {
+            "type": "boolean",
+            "label": "Signups Allowed",
+            "required": false,
+            "env_variable": "VAULTWARDEN_SIGNUPS_ALLOWED",
+            "default": false
+        },
+        {
+            "type": "boolean",
+            "label": "Signups Verify",
+            "required": false,
+            "env_variable": "VAULTWARDEN_SIGNUPS_VERIFY",
+            "default": true
+        },
+        {
+            "type": "boolean",
+            "label": "Invitations Allowed",
+            "required": false,
+            "env_variable": "VAULTWARDEN_INVITATIONS_ALLOWED",
+            "default": false
+        },
+        {
+            "type": "text",
+            "label": "Invitations Org Name",
+            "required": false,
+            "env_variable": "VAULTWARDEN_INVITATIONS_ORG_NAME"
+        },
+        {
+            "type": "text",
+            "label": "Emergency Access Allowed",
+            "required": false,
+            "env_variable": "VAULTWARDEN_EMERGENCY_ACCESS_ALLOWED",
+            "default": true
+        },
+        {
+            "env_variable": "VAULTWARDEN_POSTGRES_DB",
+            "label": "Postgres db name",
+            "required": true,
+            "type": "text",
+            "default": "vault"
+        },
+        {
+            "env_variable": "VAULTWARDEN_POSTGRES_USER",
+            "label": "Postgres user",
+            "required": true,
+            "type": "text",
+            "default": "vault_user"
+        },
+        {
+            "env_variable": "VAULTWARDEN_POSTGRES_PASSWORD",
+            "label": "Postgres password",
+            "required": true,
+            "type": "password",
+            "default": "vault_password"
+        },
+        {
+            "type": "text",
+            "label": "SMTP Host",
+            "required": false,
+            "env_variable": "VAULTWARDEN_SMTP_HOST"
+        },
+        {
+            "type": "text",
+            "label": "SMTP Security",
+            "required": false,
+            "env_variable": "VAULTWARDEN_SMTP_SECURITY"
+        },
+        {
+            "type": "text",
+            "label": "SMTP Port",
+            "required": false,
+            "env_variable": "VAULTWARDEN_SMTP_PORT",
+            "default": 465
+        },
+        {
+            "type": "text",
+            "label": "SMTP Username",
+            "required": false,
+            "env_variable": "VAULTWARDEN_SMTP_USERNAME"
+        },
+        {
+            "type": "password",
+            "label": "SMTP Password",
+            "required": false,
+            "env_variable": "VAULTWARDEN_SMTP_PASSWORD"
+        },
+        {
+            "type": "text",
+            "label": "SMTP From",
+            "required": false,
+            "env_variable": "VAULTWARDEN_SMTP_FROM"
+        },
+        {
+            "type": "text",
+            "label": "SMTP From Name",
+            "required": false,
+            "env_variable": "VAULTWARDEN_SMTP_FROM_NAME",
+            "default": "Vaultwarden"
+        }
+    ],
+    "supported_architectures": [
+        "amd64"
+    ],
+    "created_at": 1691943801422,
+    "updated_at": 1754052095424
+}

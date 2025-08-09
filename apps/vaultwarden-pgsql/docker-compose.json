@@ -1,0 +1,58 @@
+{
+    "services": [
+        {
+            "name": "vaultwarden",
+            "image": "vaultwarden/server:1.34.3",
+            "isMain": true,
+            "internalPort": 80,
+            "environment": {
+                "WEBSOCKET_ENABLED": "true",
+                "ADMIN_TOKEN": "${VAULTWARDEN_ADMIN_PASSWORD}",
+                "DOMAIN": "${VAULTWARDEN_DOMAIN}",
+                "SEND_ALLOWED": "${VAULTWARDEN_SEND_ALLOWED}",
+                "SIGNUPS_ALLOWED": "${VAULTWARDEN_SIGNUPS_ALLOWED}",
+                "SIGNUPS_VERIFY": "${VAULTWARDEN_SIGNUPS_VERIFY}",
+                "INVITATIONS_ALLOWED": "${VAULTWARDEN_INVITATIONS_ALLOWED}",
+                "INVITATIONS_ORG_NAME": "${VAULTWARDEN_INVITATIONS_ORG_NAME}",
+                "EMERGENCY_ACCESS_ALLOWED": "${VAULTWARDEN_EMERGENCY_ACCESS_ALLOWED}",
+                "DATABASE_URL": "postgresql://${VAULTWARDEN_POSTGRES_USER}:${VAULTWARDEN_POSTGRES_PASSWORD}@vaultwarden-db:5432/${VAULTWARDEN_POSTGRES_DB}",
+                "SMTP_HOST": "${VAULTWARDEN_SMTP_HOST}",
+                "SMTP_SECURITY": "${VAULTWARDEN_SMTP_SECURITY}",
+                "SMTP_PORT": "${VAULTWARDEN_SMTP_PORT}",
+                "SMTP_USERNAME": "${VAULTWARDEN_SMTP_USERNAME}",
+                "SMTP_PASSWORD": "${VAULTWARDEN_SMTP_PASSWORD}",
+                "SMTP_FROM": "${VAULTWARDEN_SMTP_FROM}",
+                "SMTP_FROM_NAME": "${VAULTWARDEN_SMTP_FROM_NAME}"
+            },
+            "volumes": [
+                {
+                    "hostPath": "${APP_DATA_DIR}/data",
+                    "containerPath": "/data"
+                }
+            ]
+        },
+        {
+            "name": "vaultwarden-db",
+            "image": "postgres:17",
+            "environment": {
+                "POSTGRES_USER": "${VAULTWARDEN_POSTGRES_USER}",
+                "POSTGRES_PASSWORD": "${VAULTWARDEN_POSTGRES_PASSWORD}",
+                "POSTGRES_DB": "${VAULTWARDEN_POSTGRES_DB}"
+            },
+            "volumes": [
+                {
+                    "hostPath": "${APP_DATA_DIR}/data/postgres",
+                    "containerPath": "/var/lib/postgresql/data"
+                }
+            ],
+            "healthCheck": {
+                "interval": "5s",
+                "timeout": "60s",
+                "retries": 10,
+                "test": "pg_isready -d postgres://${VAULTWARDEN_POSTGRES_USER}:${VAULTWARDEN_POSTGRES_PASSWORD}@vaultwarden-db:5432/${VAULTWARDEN_POSTGRES_DB}",
+                "startPeriod": "5s"
+            }
+        }
+    ],
+    "$schema": "../dynamic-compose-schema.json"
+}
