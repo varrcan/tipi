@@ -17,6 +17,12 @@
     "exposable": true,
     "form_fields": [
         {
+            "env_variable": "AFFINE_IMAGE_TAG",
+            "label": "Image Tag",
+            "required": false,
+            "type": "text"
+        },
+        {
             "env_variable": "AFFINE_ADMIN_EMAIL",
             "label": "Admin Email",
             "pattern_error": "Invalid email",
