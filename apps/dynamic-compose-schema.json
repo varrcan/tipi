@@ -194,9 +194,19 @@
             }
           },
           "environment": {
-            "type": "object",
-            "additionalProperties": {
-              "type": ["string", "number"]
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": ["string", "number", "boolean"]
+                }
+              },
+              "required": ["key", "value"],
+              "additionalProperties": false
             }
           },
           "sysctls": {
@@ -428,11 +438,15 @@
         "additionalProperties": false
       }
     },
+    "schemaVersion": {
+      "type": "number",
+      "const": 2
+    },
     "$schema": {
       "type": "string"
     }
   },
-  "required": ["services"],
+  "required": ["services", "schemaVersion"],
   "additionalProperties": false,
   "$schema": "http://json-schema.org/draft-07/schema#"
 }

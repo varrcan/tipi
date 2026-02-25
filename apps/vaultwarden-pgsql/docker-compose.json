@@ -1,29 +1,30 @@
 {
+    "schemaVersion": 2,
     "services": [
         {
             "name": "vaultwarden",
             "image": "vaultwarden/server:1.35.4",
             "isMain": true,
             "internalPort": 80,
-            "environment": {
-                "WEBSOCKET_ENABLED": "true",
-                "ADMIN_TOKEN": "${VAULTWARDEN_ADMIN_PASSWORD}",
-                "DOMAIN": "${VAULTWARDEN_DOMAIN}",
-                "SEND_ALLOWED": "${VAULTWARDEN_SEND_ALLOWED}",
-                "SIGNUPS_ALLOWED": "${VAULTWARDEN_SIGNUPS_ALLOWED}",
-                "SIGNUPS_VERIFY": "${VAULTWARDEN_SIGNUPS_VERIFY}",
-                "INVITATIONS_ALLOWED": "${VAULTWARDEN_INVITATIONS_ALLOWED}",
-                "INVITATIONS_ORG_NAME": "${VAULTWARDEN_INVITATIONS_ORG_NAME}",
-                "EMERGENCY_ACCESS_ALLOWED": "${VAULTWARDEN_EMERGENCY_ACCESS_ALLOWED}",
-                "DATABASE_URL": "postgresql://${VAULTWARDEN_POSTGRES_USER}:${VAULTWARDEN_POSTGRES_PASSWORD}@vaultwarden-db:5432/${VAULTWARDEN_POSTGRES_DB}",
-                "SMTP_HOST": "${VAULTWARDEN_SMTP_HOST}",
-                "SMTP_SECURITY": "${VAULTWARDEN_SMTP_SECURITY}",
-                "SMTP_PORT": "${VAULTWARDEN_SMTP_PORT}",
-                "SMTP_USERNAME": "${VAULTWARDEN_SMTP_USERNAME}",
-                "SMTP_PASSWORD": "${VAULTWARDEN_SMTP_PASSWORD}",
-                "SMTP_FROM": "${VAULTWARDEN_SMTP_FROM}",
-                "SMTP_FROM_NAME": "${VAULTWARDEN_SMTP_FROM_NAME}"
-            },
+            "environment": [
+                { "key": "WEBSOCKET_ENABLED", "value": "true" },
+                { "key": "ADMIN_TOKEN", "value": "${VAULTWARDEN_ADMIN_PASSWORD}" },
+                { "key": "DOMAIN", "value": "${VAULTWARDEN_DOMAIN}" },
+                { "key": "SEND_ALLOWED", "value": "${VAULTWARDEN_SEND_ALLOWED}" },
+                { "key": "SIGNUPS_ALLOWED", "value": "${VAULTWARDEN_SIGNUPS_ALLOWED}" },
+                { "key": "SIGNUPS_VERIFY", "value": "${VAULTWARDEN_SIGNUPS_VERIFY}" },
+                { "key": "INVITATIONS_ALLOWED", "value": "${VAULTWARDEN_INVITATIONS_ALLOWED}" },
+                { "key": "INVITATIONS_ORG_NAME", "value": "${VAULTWARDEN_INVITATIONS_ORG_NAME}" },
+                { "key": "EMERGENCY_ACCESS_ALLOWED", "value": "${VAULTWARDEN_EMERGENCY_ACCESS_ALLOWED}" },
+                { "key": "DATABASE_URL", "value": "postgresql://${VAULTWARDEN_POSTGRES_USER}:${VAULTWARDEN_POSTGRES_PASSWORD}@vaultwarden-db:5432/${VAULTWARDEN_POSTGRES_DB}" },
+                { "key": "SMTP_HOST", "value": "${VAULTWARDEN_SMTP_HOST}" },
+                { "key": "SMTP_SECURITY", "value": "${VAULTWARDEN_SMTP_SECURITY}" },
+                { "key": "SMTP_PORT", "value": "${VAULTWARDEN_SMTP_PORT}" },
+                { "key": "SMTP_USERNAME", "value": "${VAULTWARDEN_SMTP_USERNAME}" },
+                { "key": "SMTP_PASSWORD", "value": "${VAULTWARDEN_SMTP_PASSWORD}" },
+                { "key": "SMTP_FROM", "value": "${VAULTWARDEN_SMTP_FROM}" },
+                { "key": "SMTP_FROM_NAME", "value": "${VAULTWARDEN_SMTP_FROM_NAME}" }
+            ],
             "volumes": [
                 {
                     "hostPath": "${APP_DATA_DIR}/data/config",
@@ -34,11 +35,11 @@
         {
             "name": "vaultwarden-db",
             "image": "postgres:17",
-            "environment": {
-                "POSTGRES_USER": "${VAULTWARDEN_POSTGRES_USER}",
-                "POSTGRES_PASSWORD": "${VAULTWARDEN_POSTGRES_PASSWORD}",
-                "POSTGRES_DB": "${VAULTWARDEN_POSTGRES_DB}"
-            },
+            "environment": [
+                { "key": "POSTGRES_USER", "value": "${VAULTWARDEN_POSTGRES_USER}" },
+                { "key": "POSTGRES_PASSWORD", "value": "${VAULTWARDEN_POSTGRES_PASSWORD}" },
+                { "key": "POSTGRES_DB", "value": "${VAULTWARDEN_POSTGRES_DB}" }
+            ],
             "volumes": [
                 {
                     "hostPath": "${APP_DATA_DIR}/data/postgres",
